@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.nx/
+coverage/
+.idea/
+
+.env
+.env.*
+!.env.example
+
+packages/database/data/*.csv
+!packages/database/data/.gitkeep
+
+.DS_Store
+*.log

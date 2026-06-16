@@ -1,0 +1,30 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "ui",
+  "projectType": "application",
+  "sourceRoot": "apps/ui/src",
+  "tags": [
+    "scope:ui",
+    "type:app"
+  ],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "main": "apps/ui/src/main.ts",
+        "outputPath": "dist/apps/ui",
+        "tsConfig": "apps/ui/tsconfig.app.json",
+        "assets": []
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p apps/ui/tsconfig.app.json --noEmit"
+      }
+    }
+  }
+}
