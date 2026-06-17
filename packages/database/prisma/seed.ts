@@ -1,7 +1,8 @@
 import { createReadStream } from "node:fs";
 import { access } from "node:fs/promises";
 import path from "node:path";
-import { Prisma, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
+import { Decimal } from "@prisma/client/runtime/library";
 import { parse } from "csv-parse";
 
 type CsvRow = {
@@ -26,13 +27,13 @@ function optional(value: string | undefined): string | undefined {
   return trimmed || undefined;
 }
 
-function money(value: string | undefined): Prisma.Decimal | undefined {
+function money(value: string | undefined): Decimal | undefined {
   const normalized = value?.replace(/[$,\s]/g, "");
   if (!normalized || Number.isNaN(Number(normalized))) {
     return undefined;
   }
 
-  return new Prisma.Decimal(normalized);
+  return new Decimal(normalized);
 }
 
 function purchaseDate(value: string | undefined): Date | undefined {
