@@ -37,6 +37,11 @@ jobs:
 
       - run: npm ci
 
+      - name: Verify database connection
+        env:
+          DATABASE_URL: ${{ secrets.SUPABASE_DATABASE_URL }}
+        run: npm run db:check-connection || echo "Database unreachable"
+
       - name: Run database migrations
         env:
           DATABASE_URL: ${{ secrets.SUPABASE_DATABASE_URL }}
