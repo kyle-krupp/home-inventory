@@ -40,7 +40,8 @@ jobs:
       - name: Verify database connection
         env:
           DATABASE_URL: ${{ secrets.SUPABASE_DATABASE_URL }}
-        run: npm run db:check-connection || echo "Database unreachable"
+        run: npx prisma db execute --stdin --schema packages/database/prisma/schema.prisma < /dev/null
+        continue-on-error: true
 
       - name: Run database migrations
         env:

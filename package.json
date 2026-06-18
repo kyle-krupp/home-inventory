@@ -24,7 +24,7 @@
   "devDependencies": {
     "@nx/js": "22.7.5",
     "@prisma/client": "6.19.3",
-    "@types/node": "25.9.3",
+    "@types/node": "^25.9.3",
     "csv-parse": "6.1.0",
     "nx": "22.7.5",
     "prisma": "6.19.3",
